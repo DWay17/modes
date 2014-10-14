@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODES SYSTEM "catalog.dtd">
+<MODES>
+	<MODE FILE="test.xml" NAME="test" FILE_NAME_GLOB="*.test" FIRST_LINE_GLOB="test"/>
+	<MODE FILE="log.xml" NAME="log" FILE_NAME_GLOB="{*.log,*log*.txt}" FIRST_LINE_GLOB="log"/>
+	<MODE FILE="muttrc.xml" NAME="muttrc" FILE_NAME_GLOB="{*.muttrc,mutt*.rc}" FIRST_LINE_GLOB="muttrc"/>
+	<MODE FILE="r.xml" NAME="r" FILE_NAME_GLOB="*.r" FIRST_LINE_GLOB=""/>
+</MODES>
