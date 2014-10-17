@@ -5,4 +5,7 @@
 	<MODE FILE="log.xml" NAME="log" FILE_NAME_GLOB="{*.log,*log*.txt}" FIRST_LINE_GLOB="log"/>
 	<MODE FILE="muttrc.xml" NAME="muttrc" FILE_NAME_GLOB="{*.muttrc,mutt*.rc}" FIRST_LINE_GLOB="muttrc"/>
 	<MODE FILE="r.xml" NAME="r" FILE_NAME_GLOB="*.r" FIRST_LINE_GLOB=""/>
+	<MODE NAME="icalendar"		FILE="ical.xml"
+				FILE_NAME_GLOB="{*.ics,*.ical}"
+				FIRST_LINE_GLOB="BEGIN:VCALENDAR" />
 </MODES>
