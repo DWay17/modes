@@ -5,45 +5,58 @@
 		<PROPERTY NAME="folding" VALUE="custom"/>
 	</PROPS>
 	<RULES DEFAULT="COMMENT3" HIGHLIGHT_DIGITS="FALSE" IGNORE_CASE="TRUE">
-		<SEQ_REGEXP TYPE="LABEL">(lost|fehler|errors?|fail(ed)?)[:\s]+0+\b</SEQ_REGEXP>
+	<!--
+		-->
+		<SEQ_REGEXP TYPE="LABEL">(warnings?|lost|fehler|errors?|fail(ed)?)[:\s]+0+\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="LABEL">\b0+\s+(warnings?|lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(lost|fehler|errors?|fail(ed)?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">(\w+ )?#?err(_|ors?)?(?![: ]{1,2}\d+)\b</SEQ_REGEXP> 
+		<SEQ_REGEXP TYPE="COMMENT2">(warnings?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(warnings?)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(test(s)?)[:\s]+0+\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">(lost|fehler|errors?|fail(ed)?)[:\s](([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1" AT_WORD_START="TRUE">(([a-z_-]+) )*(fail(ed)?|abort(ed)?)</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1" AT_WORD_START="TRUE">(Could )?not (?!(needed|required))\w+</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1" AT_WORD_START="TRUE">couldn't \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(([a-z_-]+) )*(fail(ed)?|abort(ed)?)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(Could )?not (?!(needed|required))\w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">couldn't \w+</SEQ_REGEXP>
 		<!-- Cannot find -->
-		<SEQ_REGEXP TYPE="COMMENT1" AT_WORD_START="TRUE">(Cannot|Illegal) \w+</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">un(?!(less|til|it|iversity|compress|cle\b|ified\w{0,9}))\w+( \w+)?</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">(\w+ )?refused</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">inconsistent</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">missing</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">out of range</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">warn(ing)?</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">Dubious</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT4" AT_WORD_START="TRUE">Retrying( \w+)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(Cannot|Illegal) \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">un(?!(ique|ausgewog|beeinflussbar|belebt|giftig|guium|günstig|icornis|isystemisch|mittelbar|ter|terhalb|terstütz|willkürlich|verträglichkeitsreaktion|tertauchen|terfunktion|nterlappen|terlippe|terschenkel|terarm|terkiefer|teren|terhaut|iversalis|d\b|terstützenden|less|til|it|iversity|compress|cle\b|ified\w{0,9}))\w+( \w+)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">(\w+ )?refused</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">inconsistent</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">missing</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">out of range</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">warn(ings?)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">Dubious</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT4">Retrying( \w+)?</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT4">(\w+ )?null</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="DIGIT">([a-z]\w+\.)+\w+Exception</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="INVALID" AT_WORD_START="TRUE">(\w+ )?time(d )?out</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="INVALID" AT_WORD_START="TRUE">(\w+ )?err(_|ors?)?\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="INVALID" AT_WORD_START="TRUE">crit(ical)?\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">(\w+ )?time(d )?out</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">crit(ical)?\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">ORA-\d+[:,].*</SEQ_REGEXP>
 		<SEQ TYPE="KEYWORD2">done</SEQ>
 		<SEQ_REGEXP TYPE="KEYWORD2">\w+ completed?</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="KEYWORD3" AT_WORD_START="TRUE">inf(o(rmation)?|_)?\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="KEYWORD4" AT_WORD_START="TRUE">not(e|ice)</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="OPERATOR" AT_WORD_START="TRUE">duration</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="OPERATOR" AT_WORD_START="TRUE">attention</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT4" AT_WORD_START="TRUE">not (\w+)*</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="KEYWORD2">\w+[: ]+100([.,]0+)?%</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="KEYWORD3">inf(o(rmation)?|_)?\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="KEYWORD4">not(es?|ice)\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="OPERATOR">duration</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="OPERATOR">attention</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="OPERATOR">IMPORTANT</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT4">(not?|nicht) (\w+)*</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="LABEL">((\w{3,}) ){0,}(?&lt;!not ?)\b(finished|okay|ok|available|done|completed?|success(ful)?)\b(?!\?)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="LABEL">Looks good</SEQ_REGEXP>
-		<SEQ_REGEXP AT_WORD_START="TRUE" TYPE="NULL">start(ing)? \w+</SEQ_REGEXP>
-		<SEQ_REGEXP AT_WORD_START="TRUE" TYPE="NULL">stop(ing)? \w+</SEQ_REGEXP>
-		<SEQ_REGEXP AT_WORD_START="TRUE" TYPE="NULL">\w{2,}(ing)( \w+)+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="NULL">start(ing)? \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="NULL">stop(ing)? \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="NULL">\w{2,}(ing)( \w+)+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">Current Version</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">(required?) \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="NULL">do ?n('|o)t \w+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT4">((skipped:( \w+)+)|(\w+ skipped))</SEQ_REGEXP>
 		<SEQ TYPE="COMMENT4">skipped</SEQ>
+		<SEQ_REGEXP AT_LINE_START="FALSE" AT_WHITESPACE_END="FALSE" AT_WORD_START="TRUE" TYPE="INVALID">(error|fehler)(code|number|nummer)[: ]+(?!0\b)[0-9a-zA-Z-]+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">(\w+ )+\w+!</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">\w*(Exception|error)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT">(\w{2,} ){1,}(exceeded|verweigert)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">(keine?) (\w{2,} ){1,}</SEQ_REGEXP>
 	</RULES>
 </MODE>
-
 
