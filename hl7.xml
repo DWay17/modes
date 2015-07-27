@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+<MODE>
+	<RULES HIGHLIGHT_DIGITS="FALSE" >
+		<KEYWORDS>
+			<OPERATOR>|</OPERATOR>
+		</KEYWORDS>
+	</RULES>
+</MODE>

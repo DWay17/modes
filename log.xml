@@ -32,6 +32,7 @@
 		<SEQ_REGEXP TYPE="DIGIT">([a-z]\w+\.)+\w+Exception</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">(\w+ )?time(d )?out</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">crit(ical)?\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">fatal</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">ORA-\d+[:,].*</SEQ_REGEXP>
 		<SEQ TYPE="KEYWORD2">done</SEQ>
 		<SEQ_REGEXP TYPE="KEYWORD2">\w+ completed?</SEQ_REGEXP>
