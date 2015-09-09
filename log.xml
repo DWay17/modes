@@ -10,7 +10,7 @@
 		<SEQ_REGEXP TYPE="LABEL">(warnings?|lost|fehler|errors?|fail(ed)?)[:\s]+0+\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="LABEL">\b0+\s+(warnings?|lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT1">(lost|fehler|errors?|fail(ed)?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(more )?(lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">(\w+ )?#?err(_|ors?)?(?![: ]{1,2}\d+)\b</SEQ_REGEXP> 
 		<SEQ_REGEXP TYPE="COMMENT2">(warnings?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(warnings?)</SEQ_REGEXP>
