@@ -15,7 +15,7 @@
 		<SEQ_REGEXP TYPE="COMMENT2">(warnings?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(warnings?)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(test(s)?)[:\s]+0+\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">(([a-z_-]+) )*(fail(ed)?|abort(ed)?)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(([a-z_-]+) )*(fail(ed)?|abort(ed)?|fehlgeschlagen)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT1">(Could )?not (?!(needed|required))\w+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT1">couldn't \w+</SEQ_REGEXP>
 		<!-- Cannot find -->
