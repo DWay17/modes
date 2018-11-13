@@ -2,14 +2,24 @@
 <!DOCTYPE MODES SYSTEM "catalog.dtd">
 <MODES>
 	<MODE NAME="test" FILE="test.xml" FILE_NAME_GLOB="*.test" FIRST_LINE_GLOB="test"/>
+<!--	<MODE NAME="java" FILE="java.xml" FILE_NAME_GLOB="*.java" FIRST_LINE_GLOB="package*"/> -->
 	<MODE NAME="colortest" FILE="colortest.xml" FILE_NAME_GLOB="*.colortest" FIRST_LINE_GLOB="colortest"/>
-	<MODE NAME="log" FILE="log.xml" FILE_NAME_GLOB="{*.log,*log*.txt,*.err}" FIRST_LINE_GLOB="*log*"/>
+	<MODE NAME="log" FILE="log.xml"
+		FILE_NAME_GLOB="{catalina.out,*.log,*log*.{txt,tsv,csv},*.err,*test.txt,*.log.{1,2,3,4,5}}" 
+		FIRST_LINE_GLOB="{*nmap*,*log*,*\[INFO\]*,*\[main\]*,*\[WARN\]*,*\[ERROR\]*,*\[info\]*,*\[warn\]*,*\[error\]*,*Exception*,* {error,warn,info,Duration,Extracting} *,*{SLF4J,slf4j}*}"/>
 	<MODE NAME="muttrc" FILE="muttrc.xml" FILE_NAME_GLOB="{*.muttrc,mutt*.rc}" FIRST_LINE_GLOB="muttrc"/>
 	<MODE NAME="r" FILE="r.xml" FILE_NAME_GLOB="*.r" FIRST_LINE_GLOB=""/>
 	<MODE NAME="icalendar" FILE="ical.xml" FILE_NAME_GLOB="{*.ics,*.ical}" FIRST_LINE_GLOB="BEGIN:VCALENDAR" />
-	<MODE NAME="gitconfig" FILE="gitconfig.xml" FILE_NAME_GLOB="{gitconfig,{*.gitconfig,config}}" FIRST_LINE_GLOB="{[user],[core]}"/>
-	<MODE NAME="config" FILE="config.xml" FILE_NAME_GLOB="{*.config,*.conf}" FIRST_LINE_GLOB="lasdjlkjsdf"/>
-	<MODE NAME="mail" FILE="mail.xml" FILE_NAME_GLOB="{*.mail,*.mbox}" FIRST_LINE_GLOB="{Received,Return-Path,Delivered-To,Return-Path,Message-ID}: *"/>
-	<MODE FILE="vimrc.xml" NAME="vimrc" FILE_NAME_GLOB="{vimrc,.virc}" FIRST_LINE_GLOB="vimrc"/>
-	<MODE FILE="hl7.xml" NAME="hl7" FILE_NAME_GLOB="*.{hl7}" FIRST_LINE_GLOB="HL7"/>
+	<MODE NAME="gitconfig" FILE="gitconfig.xml" 
+		FILE_NAME_GLOB="{gitconfig,{*.gitconfig,config}}" 
+		FIRST_LINE_GLOB="{[user],[core]}"/>
+	<MODE NAME="config" FILE="config.xml" FILE_NAME_GLOB="*.{config,conf,cnf}" FIRST_LINE_GLOB="config"/>
+	<MODE NAME="mail" FILE="mail.xml" 
+		FILE_NAME_GLOB="{*.mail,*.mbox}" 
+		FIRST_LINE_GLOB="{Received,Return-Path,Delivered-To,Return-Path,Message-ID,MIME-Version}: *"/>
+	<MODE FILE="vimrc.xml" NAME="vimrc" FILE_NAME_GLOB="{vimrc,.virc,.vimrc}" FIRST_LINE_GLOB="vimrc"/>
+	<MODE FILE="hl7.xml" NAME="hl7" FILE_NAME_GLOB="*.{hl7}" FIRST_LINE_GLOB="{HL7,MSH}"/>
+	<MODE FILE="policy.xml" NAME="policy" FILE_NAME_GLOB="*.{policy}" FIRST_LINE_GLOB="policy"/>
+	<MODE NAME="docker" FILE="docker.xml" FILE_NAME_GLOB="Dockerfile"/>
+	<MODE NAME="pig" FILE="pig.xml" FILE_NAME_GLOB="*.pig"/>
 </MODES>

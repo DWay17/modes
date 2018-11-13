@@ -1,63 +1,131 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE MODE SYSTEM "xmode.dtd">
 <MODE>
 	<PROPS>
-		<PROPERTY NAME="folding" VALUE="custom"/>
+		<!-- <PROPERTY NAME="folding" VALUE="custom"/> -->
+		<PROPERTY NAME="folding" VALUE="indent"/>
 	</PROPS>
 	<RULES DEFAULT="COMMENT3" HIGHLIGHT_DIGITS="FALSE" IGNORE_CASE="TRUE">
 	<!--
 		-->
-		<SEQ_REGEXP TYPE="LABEL">(warnings?|lost|fehler|errors?|fail(ed)?)[:\s]+0+\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="LABEL">\b0+\s+(warnings?|lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">(lost|fehler|errors?|fail(ed)?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="DIGIT">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(more )?(lost|fehler|errors?|fail(ed)?)</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="INVALID">(\w+ )?#?err(_|ors?)?(?![: ]{1,2}\d+)\b</SEQ_REGEXP> 
+		<SEQ_REGEXP TYPE="LABEL">\b(valid|good|okay|success(ful(ly)?)?)\w*[:=]?\s?(([1-9])|([1-9]\d*)|(\d*[1-9]))\b( \w+)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="LABEL">\b(([1-9])|([1-9]\d*)|(\d*[1-9]))\s+(valid|good|okay|success(ful(ly)?)?)\w*</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT">\b(valid|good|okay|success(ful(ly)?)?)\w*[:=]?\s?0+\b( \w+)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT">\b0+ (valid|good|okay|success(ful(ly)?)?)\w*</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="LABEL">(wrong|Invalid|warnings?|lost|fehler|errors?(\w+)?|fail(ed|ures?)?)\w*[:=]?\s?0+\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="LABEL">\b0+ (wrong|Invalid|warnings?|lost|fehler|errors?(\w+)?|fail(ed|ure)?)\w*</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(wrong|Invalid|lost|fehler|errors?(\w+)?|fail(ed|ures?)?)\w*[:=]?\s?(([1-9])|([1-9]\d*)|(\d*[1-9]))\b( \w+)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(more )?(wrong|Invalid|lost|fehler|errors?|fail(ed|ure)?|false)\w*</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">(\w+ )?#?err(_|ors?)?(?![: ]{1,2}\d+)\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(warnings?)[:\s]+(([1-9])|([1-9]\d*)|(\d*[1-9]))\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(([1-9])|([1-9]\d*)|(\d*[1-9])) +(warnings?)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(test(s)?)[:\s]+0+\b</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">(([a-z_-]+) )*(fail(ed)?|abort(ed)?|fehlgeschlagen)</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">(Could )?not (?!(needed|required))\w+</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT1">couldn't \w+</SEQ_REGEXP>
-		<!-- Cannot find -->
-		<SEQ_REGEXP TYPE="COMMENT1">(Cannot|Illegal) \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(([a-z_-]+)[: ])*(fail(ed|ure)?|abort(ed|ure)?|fehlgeschlagen|false)\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(Could )?not (?!(needed|required|be|available))\w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(couldn't|Cannot|Illegal|problems?)( \w{2,}){1,}</SEQ_REGEXP>
+		<SEQ TYPE="COMMENT2">filtered</SEQ>
+		<SEQ_REGEXP TYPE="COMMENT1">Access denied \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT">(\w+( \w+){0,} )?(null|invalid)( \w+( \w+){0,})?</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">un(?!(ique|ausgewog|beeinflussbar|belebt|giftig|guium|günstig|icornis|isystemisch|mittelbar|ter|terhalb|terstütz|willkürlich|verträglichkeitsreaktion|tertauchen|terfunktion|nterlappen|terlippe|terschenkel|terarm|terkiefer|teren|terhaut|iversalis|d\b|terstützenden|less|til|it|iversity|compress|cle\b|ified\w{0,9}))\w+( \w+)?</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">(([a-z_-]+) )*(skldjjskhk)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(\w+ )?refused</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">inconsistent</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT2">missing</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">missing \w+( \w+){0,}</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">\w+( \w+){0,} missing</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">out of range</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">warn(ings?)?</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">Dubious</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2" AT_WORD_START="TRUE">9\d\d\b</SEQ_REGEXP> <!-- http codes -->
+		<SEQ_REGEXP TYPE="COMMENT4">\b30\d\b</SEQ_REGEXP> <!-- http codes -->
 		<SEQ_REGEXP TYPE="COMMENT4">Retrying( \w+)?</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT4">(\w+ )?null</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT4">skip( \w+)?</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="DIGIT">([a-z]\w+\.)+\w+Exception</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="DIGIT" AT_WORD_START="TRUE">(4[012][0-68]|4[01]7|4[02]9|4[35]1|444|449)\b</SEQ_REGEXP> <!-- http codes -->
 		<SEQ_REGEXP TYPE="INVALID">(\w+ )?time(d )?out</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">crit(ical)?\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID" AT_WORD_START="TRUE">(50\d|51[01])\b</SEQ_REGEXP> <!-- http codes -->
 		<SEQ_REGEXP TYPE="INVALID">fatal</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">SCHWERWIEGEND</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="INVALID">ORA-\d+[:,].*</SEQ_REGEXP>
 		<SEQ TYPE="KEYWORD2">done</SEQ>
+		<SEQ TYPE="KEYWORD2">open</SEQ>
 		<SEQ_REGEXP TYPE="KEYWORD2">\w+ completed?</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="KEYWORD2">\w+[: ]+100([.,]0+)?%</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="KEYWORD3">inf(o(rmation)?|_)?\b</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="NULL" AT_WORD_START="TRUE">10[012]\b</SEQ_REGEXP> <!-- http codes -->
+		<SEQ_REGEXP TYPE="KEYWORD2" AT_WORD_START="TRUE">(20\d|226)\b</SEQ_REGEXP> <!-- http codes -->
 		<SEQ_REGEXP TYPE="KEYWORD4">not(es?|ice)\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="OPERATOR">duration</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="OPERATOR">attention</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="OPERATOR">IMPORTANT</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="COMMENT4">(not?|nicht) (\w+)*</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="LABEL">((\w{3,}) ){0,}(?&lt;!not ?)\b(finished|okay|ok|available|done|completed?|success(ful)?)\b(?!\?)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT4">(not?|nicht) (\w+)( \w+){0,}</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="LABEL">((\w{3,}) ){0,}(?&lt;!not ?(be )?)\b(finished|true|okay|ok|available|done|completed?|success(ful(ly)?)?|found)\b(?!(\?))(?!( no))( (?!(un))(\w{3,})){0,}</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="KEYWORD3">inf(o(rmation)?|_)?\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="LABEL">Looks good</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">start(ing)? \w+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">stop(ing)? \w+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">\w{2,}(ing)( \w+)+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">Current Version</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">(required?) \w+</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT2">\w+ required</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="NULL">do ?n('|o)t \w+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT4">((skipped:( \w+)+)|(\w+ skipped))</SEQ_REGEXP>
 		<SEQ TYPE="COMMENT4">skipped</SEQ>
-		<SEQ_REGEXP AT_LINE_START="FALSE" AT_WHITESPACE_END="FALSE" AT_WORD_START="TRUE" TYPE="INVALID">(error|fehler)(code|number|nummer)[: ]+(?!0\b)[0-9a-zA-Z-]+</SEQ_REGEXP>
+		<SEQ_REGEXP AT_LINE_START="FALSE" AT_WHITESPACE_END="FALSE" AT_WORD_START="TRUE" TYPE="INVALID">(error|fehler) ?(code|number|nummer)[: ]+(?!0\b)[0-9a-zA-Z-]+</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(\w+ )+\w+!</SEQ_REGEXP>
-		<SEQ_REGEXP TYPE="INVALID">\w*(Exception|error)</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="INVALID">\w*(Exception|error)s?\b</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="DIGIT">(\w{2,} ){1,}(exceeded|verweigert)</SEQ_REGEXP>
 		<SEQ_REGEXP TYPE="COMMENT2">(keine?) (\w{2,} ){1,}</SEQ_REGEXP>
+		<SEQ_REGEXP TYPE="COMMENT1">(\w+ ){0,5}closed\b</SEQ_REGEXP>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="NULL">[0m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="NULL">[0;30m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="NULL">[30;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="NULL">[30m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[1;30m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[30;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT1">[0;31m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT1">[31;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT1">[31m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="DIGIT">[1;31m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="DIGIT">[31;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD2">[0;32m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD2">[32;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD2">[32m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LABEL">[1;32m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LABEL">[32;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT4">[0;33m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT4">[33;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT4">[33m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT2">[1;33m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT2">[33;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD3">[0;34m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD3">[34;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD3">[34m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD4">[1;34m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD4">[34;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL4">[0;35m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL4">[35;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL4">[35m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL1">[1;35m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL1">[35;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD1">[0;36m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD1">[36;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="KEYWORD1">[36m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL2">[1;36m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="LITERAL2">[36;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[0;37m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[37;0m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[37m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[1;37m</MARK_FOLLOWING>
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="COMMENT3">[37;1m</MARK_FOLLOWING>
+		
+		<MARK_FOLLOWING MATCH_TYPE="COMMENT3" TYPE="OPERATOR">[91m</MARK_FOLLOWING>
 	</RULES>
 </MODE>
-
